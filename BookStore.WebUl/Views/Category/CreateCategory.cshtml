@@ -1,0 +1,17 @@
+﻿@model BookStore.WebUI.Dtos.CategoryDtos.CreateCategoryDto
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<form method="post" action="/Category/CreateCategory">
+    <div class="container">
+        <br /><br />
+
+        <div class="form-group">
+            <label>Kategori Adı</label>
+            <input type="text" class="form-control" asp-for="CartegoryName" />
+        </div>
+        <button type="submit" class="btn btn-success">Kaydet</button>
+    </div>
+</form>
