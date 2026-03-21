@@ -14,6 +14,8 @@ namespace BookStore.DataAccessLayer.Context
         {
             optionsBuilder.UseSqlServer("Server=CAN\\SQLEXPRESS;initial catalog=ApiBookDb;integrated security=true; trustservercertificate=true;");
         }
+
+
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
 
