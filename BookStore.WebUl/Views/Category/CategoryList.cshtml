@@ -1,6 +1,7 @@
 ﻿@model List<BookStore.WebUI.Dtos.CategoryDtos.ResultCategoryDto>
 @{
     Layout = null;
+    int count = 0;
 }
 
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -18,9 +19,10 @@
 
         @foreach (var item in Model)
         {
+            count++;
             <tr>
 
-                <td>@item.CategoryId</td>
+                <td>@count</td>
                 <td>@item.CartegoryName</td>
                 <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
                 <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-success">Güncelle</a></td>

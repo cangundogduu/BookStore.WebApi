@@ -16,6 +16,7 @@ namespace BookStore.DataAccessLayer.Repositories
         {
             _context = context;
         }
+        
 
         public void Add(T entity)
         {
@@ -45,6 +46,7 @@ namespace BookStore.DataAccessLayer.Repositories
         public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
+            _context.SaveChanges();
 
         }
     }
