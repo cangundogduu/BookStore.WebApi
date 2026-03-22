@@ -44,6 +44,13 @@ namespace BookStore.WebApi.Controllers
             _categoryService.TUpdate(category);
             return Ok("Güncelleme işlemi başarı ile gerçekleştirildi.");
         }
+
+        [HttpGet("GetByIdCategory")]
+        public IActionResult GetCategory(int id)
+        {
+           var value=  _categoryService.TGetById(id);
+            return Ok(value);
+        }
     }
 }
 

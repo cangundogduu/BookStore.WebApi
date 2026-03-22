@@ -1,0 +1,18 @@
+﻿@using BookStore.WebUI.Dtos.CategoryDtos
+@model GetByIdCategoryDto
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<form method="post">
+    <div class="container">
+        <br /><br />
+        <input type="hidden" asp-for="CategoryId" />
+        <label>Ürün Adı</label>
+        <input type="text" class="form-control" asp-for="CategoryName" />
+        <br />
+        <button class="btn btn-success">Ürünü Güncelle</button>
+    </div>
+</form>

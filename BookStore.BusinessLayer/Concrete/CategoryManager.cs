@@ -24,12 +24,11 @@ namespace BookStore.BusinessLayer.Concrete
 
         public void TAdd(Category entity)
         {
-            if (entity.CartegoryName.Length >= 3 &&
-                entity.CartegoryName.Length <= 30 &&
-                entity.CartegoryName.Contains('a'))
+            if (entity.CategoryName.Length >= 3 &&
+                entity.CategoryName.Length <= 30 &&
+                entity.CategoryName.Contains('a'))
             {
                 _categoryDal.Add(entity);
-
             }
         }
 

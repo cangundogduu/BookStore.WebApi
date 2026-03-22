@@ -3,6 +3,6 @@
     public class CreateCategoryDto
     {
         
-        public string CartegoryName { get; set; }
+        public string CategoryName { get; set; }
     }
 }
