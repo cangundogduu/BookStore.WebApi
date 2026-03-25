@@ -1,6 +1,6 @@
-﻿namespace BookStore.WebUI.Dtos.ProductDtos
+﻿namespace BookStore.WebApi.Dtos.Product
 {
-    public class UpdateProductDto
+    public class ProductUpdateDto
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }

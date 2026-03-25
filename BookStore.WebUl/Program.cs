@@ -1,9 +1,21 @@
+using BookStore.BusinessLayer.Abstract;
+using BookStore.BusinessLayer.Concrete;
+using BookStore.DataAccessLayer.Abstract;
+using BookStore.DataAccessLayer.Context;
+using BookStore.DataAccessLayer.EntityFramework;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddHttpClient();
 
+
 builder.Services.AddControllersWithViews();
+
+
+
+
 
 var app = builder.Build();
 

@@ -8,10 +8,11 @@ namespace BookStore.WebUI.Controllers
     public class ProductController : Controller
     {
         private readonly IHttpClientFactory _httpCilentFactory;
-
+    
         public ProductController(IHttpClientFactory httpCilentFactory)
         {
             _httpCilentFactory = httpCilentFactory;
+
         }
 
         public async Task<IActionResult> ProductList()
@@ -26,12 +27,15 @@ namespace BookStore.WebUI.Controllers
         [HttpGet]
         public IActionResult CreateProduct()
         {
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {
+
+
             var client = _httpCilentFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createProductDto);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");

@@ -1,5 +1,7 @@
-﻿using BookStore.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using BookStore.BusinessLayer.Abstract;
 using BookStore.EntityLayer.Concrete;
+using BookStore.WebApi.Dtos.Category;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,24 +12,28 @@ namespace BookStore.WebApi.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
+        private readonly IMapper _mapper;
 
-        public CategoriesController(ICategoryService categoryService)
+        public CategoriesController(ICategoryService categoryService, IMapper mapper)
         {
             _categoryService = categoryService;
+            _mapper = mapper;
         }
 
 
         [HttpGet]
         public IActionResult CategoryList()
         {
-            var value = _categoryService.TGetAll();
-            return Ok(value);
+            var categories = _categoryService.TGetAll();
+            var values = _mapper.Map<List<CategoryResultDto>>(categories);
+            return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult CreateCategory(Category category)
+        public IActionResult CreateCategory(CategoryCreateDto category)
         {
-            _categoryService.TAdd(category);
+            var value = _mapper.Map<Category>(category);
+            _categoryService.TAdd(value);
             return Ok("Ekleme işlemi başarı ile gerçekleştirildi.");
         }
 
@@ -39,17 +45,20 @@ namespace BookStore.WebApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateCategory(Category category)
+        public IActionResult UpdateCategory(CategoryUpdateDto category)
         {
-            _categoryService.TUpdate(category);
+            var value = _mapper.Map<Category>(category);
+            _categoryService.TUpdate(value);
             return Ok("Güncelleme işlemi başarı ile gerçekleştirildi.");
         }
 
         [HttpGet("GetByIdCategory")]
         public IActionResult GetCategory(int id)
         {
-           var value=  _categoryService.TGetById(id);
-            return Ok(value);
+            var value = _categoryService.TGetById(id);
+            var result = _mapper.Map<CategoryGetByIdDto>(value);
+
+            return Ok(result);
         }
     }
 }

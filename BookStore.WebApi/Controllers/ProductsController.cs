@@ -1,5 +1,8 @@
-﻿using BookStore.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using BookStore.BusinessLayer.Abstract;
 using BookStore.EntityLayer.Concrete;
+using BookStore.WebApi.Dtos.Category;
+using BookStore.WebApi.Dtos.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,35 +10,40 @@ namespace BookStore.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductsController: ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly IMapper _mapper;
 
-        public ProductsController(IProductService productService)
+        public ProductsController(IProductService productService, IMapper mapper)
         {
             _productService = productService;
+            _mapper = mapper;
         }
 
 
         [HttpGet]
         public IActionResult ProductList()
         {
-            var value = _productService.TGetAll();
-            return Ok(value);
+            var products = _productService.TGetAll();
+            var values = _mapper.Map<List<ProductResultDto>>(products);
+            return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult CreateProduct(Product product)
+        public IActionResult CreateProduct(ProductCreateDto product)
         {
-            _productService.TAdd(product);
+            var value = _mapper.Map<Product>(product);
+            _productService.TAdd(value);
             return Ok("Ekleme işlemi başarı ile gerçekleştirildi.");
         }
 
 
         [HttpPut]
-        public IActionResult UpdateProduct(Product product)
+        public IActionResult UpdateProduct(ProductUpdateDto product)
         {
-            _productService.TUpdate(product);
+            var value = _mapper.Map<Product>(product);
+            _productService.TUpdate(value);
             return Ok("Güncelleme işlemi başarı ile gerçekleştirildi.");
         }
 
@@ -51,7 +59,8 @@ namespace BookStore.WebApi.Controllers
         public IActionResult GetProduct(int id)
         {
             var value = _productService.TGetById(id);
-            return Ok(value);
+            var result = _mapper.Map<ProductGetByIdDto>(value);
+            return Ok(result);
         }
 
         [HttpGet("GetProductCount")]

@@ -12,6 +12,7 @@
         <tr>
             <th>#</th>
             <th>Ürün Adı</th>
+            <th>Kategori</th>
             <th>Ürün Stok</th>
             <th>Ürün Fiyat</th>
             <th>Sil</th>
@@ -24,6 +25,7 @@
 
                 <td>@item.ProductId</td>
                 <td>@item.ProductName</td>
+                <td>@item.CategoryId</td>
                 <td>@item.ProductStock</td>
                 <td>@item.ProductPrice</td>
                 <td><a href="/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>

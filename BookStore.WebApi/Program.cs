@@ -3,6 +3,7 @@ using BookStore.BusinessLayer.Concrete;
 using BookStore.DataAccessLayer.Abstract;
 using BookStore.DataAccessLayer.Context;
 using BookStore.DataAccessLayer.EntityFramework;
+using BookStore.WebApi.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,8 @@ builder.Services.AddScoped<ICategoryService, CategoryManager>();
 
 builder.Services.AddScoped<IProductDal, EfProductDal>();
 builder.Services.AddScoped<IProductService, ProductManager>();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
