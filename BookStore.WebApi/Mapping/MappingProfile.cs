@@ -2,6 +2,7 @@
 using BookStore.EntityLayer.Concrete;
 using BookStore.WebApi.Dtos.Category;
 using BookStore.WebApi.Dtos.Product;
+using BookStore.WebApi.Dtos.Quote;
 
 namespace BookStore.WebApi.Mapping
 {
@@ -19,6 +20,13 @@ namespace BookStore.WebApi.Mapping
             CreateMap<Product,ProductResultDto>().ReverseMap();
             CreateMap<Product,ProductUpdateDto>().ReverseMap();
             CreateMap<Product,ProductGetByIdDto>().ReverseMap();
+           
+            
+            
+            CreateMap<Quote,QuoteResultDto>().ReverseMap();
+            CreateMap<Quote,QuoteUpdateDto>().ReverseMap();
+            CreateMap<Quote,QuoteCreateDto>().ReverseMap();
+            CreateMap<Quote,QuoteGetByIdDto>().ReverseMap();
 
         }
 
