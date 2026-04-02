@@ -1,0 +1,22 @@
+﻿@using BookStore.WebUI.Dtos.QuoteDto
+@model CreateQuoteDto
+@{
+    ViewData["Title"] = "CreateQuote";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container text-center">
+    <br /><br />
+    <form method="post">
+        <label>Alıntı</label>
+        <input type="text" asp-for="Text" class="form-control" />
+        <br />
+        <label>Yazar</label>
+        <input type="int" asp-for="Author" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Alıntı Ekle</button>
+    </form>
+</div>
+
